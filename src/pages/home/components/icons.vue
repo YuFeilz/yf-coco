@@ -1,8 +1,8 @@
 <template>
   <div class="icons">
     <swiper>
-      <swiper-slide v-for="item of list" :key="item.id">
-        <div class="icon" v-for ="item in iconList" :key="item.id">
+      <swiper-slide v-for="(page,index) of pages" :key="index">
+        <div class="icon" v-for ="item in page" :key="item.id">
           <p class="icon-text">{{item.text}}</p>
         </div>
       </swiper-slide>
@@ -25,6 +25,19 @@ export default {
         {id: '0008', imgUrl: '', text: '热门景点'},
         {id: '0009', imgUrl: '', text: '热门景点'}
       ]
+    }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
     }
   }
 }
