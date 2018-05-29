@@ -3,7 +3,10 @@
     <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="icon" v-for ="item in page" :key="item.id">
-          <p class="icon-text">{{item.text}}</p>
+          <div class="icon-img">
+            <img class="icon-img-con" :src="item.imgUrl" alt="">
+          </div>
+          <p class="icon-text">{{item.desc}}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -12,34 +15,28 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         autoplay: false
-      },
-      iconList: [
-        {id: '0001', imgUrl: '', text: '热门景点'},
-        {id: '0002', imgUrl: '', text: '热门景点'},
-        {id: '0003', imgUrl: '', text: '热门景点'},
-        {id: '0004', imgUrl: '', text: '热门景点'},
-        {id: '0005', imgUrl: '', text: '热门景点'},
-        {id: '0006', imgUrl: '', text: '热门景点'},
-        {id: '0007', imgUrl: '', text: '热门景点'},
-        {id: '0008', imgUrl: '', text: '热门景点'},
-        {id: '0009', imgUrl: '', text: '热门景点'}
-      ]
+      }
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
-        const page = Math.floor(index / 8)
-        if (!pages[page]) {
-          pages[page] = []
-        }
-        pages[page].push(item)
-      })
+      if (this.list.length) {
+        this.list.forEach((item, index) => {
+          const page = Math.floor(index / 8)
+          if (!pages[page]) {
+            pages[page] = []
+          }
+          pages[page].push(item)
+        })
+      }
       return pages
     }
   }
@@ -58,13 +55,25 @@ export default {
     padding-bottom 25%
     box-sizing border-box
     background-color lightgreen
-    .icon-text
-      line-height .5rem
+    .icon-img
       position absolute
-      bottom .44rem
-      width 100%
-      text-align center
-      border-radius .1rem
+      top: 0
+      left: 0
+      right: 0
+      bottom: .44rem
+      padding .1rem
+      .icon-img-con
+        height 100%
+        margin 0 auto
+        display block
+    .icon-text
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      height: .44rem
+      line-height: .44rem
+      text-align: center
       color #fff
       ellipsis()
 </style>

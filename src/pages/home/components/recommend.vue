@@ -2,8 +2,8 @@
   <div class="recommend">
     <h4 class="recommend-title">热销推荐</h4>
     <ul>
-      <li class="item"  v-for="item in recommendList" :key="item.id">
-        <img src="" alt="" class="item-img">
+      <li class="item"  v-for="item in list" :key="item.id">
+        <img :src="item.imgUrl" alt="" class="item-img">
         <div class="item-info">
           <p class="item-title">{{item.title}} </p>
           <p class="item-desc">{{item.desc}} </p>
@@ -16,14 +16,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [
-        {id: '0001', title: '详情信息', desc: '描述', imgUrl: ''},
-        {id: '0002', title: '详情信息', desc: '描述', imgUrl: ''},
-        {id: '0003', title: '详情信息', desc: '描述', imgUrl: ''}
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
@@ -54,6 +48,7 @@ export default {
       .item-desc
         line-height .4rem
         color #ccc
+        ellipsis()
       .item-btn
         line-height .44rem
         margin-top .16rem
@@ -61,4 +56,5 @@ export default {
         color #fff
         padding 0 .2rem
         border-radius .1rem
+        font-size .2rem
 </style>

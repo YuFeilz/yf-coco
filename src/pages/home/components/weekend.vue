@@ -2,9 +2,9 @@
   <div class="recommend">
     <h4 class="recommend-title">周末去哪儿</h4>
     <ul>
-      <li class="item"  v-for="item in recommendList" :key="item.id">
+      <li class="item"  v-for="item in list" :key="item.id">
         <div class="item-img-wrapper">
-          <img src="" alt="" class="item-img">
+          <img :src="item.imgUrl" alt="" class="item-img">
         </div>
           <div class="item-info">
             <p class="item-title">{{item.title}} </p>
@@ -17,14 +17,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      recommendList: [
-        {id: '0001', title: '详情信息', desc: '描述', imgUrl: ''},
-        {id: '0002', title: '详情信息', desc: '描述', imgUrl: ''},
-        {id: '0003', title: '详情信息', desc: '描述', imgUrl: ''}
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
@@ -41,7 +35,6 @@ export default {
     padding-bottom 33.9%
     .item-img
       width 100%
-      height 1.7rem
   .item-info
     padding .1rem
     .item-title
