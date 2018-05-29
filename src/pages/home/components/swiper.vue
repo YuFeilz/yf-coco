@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <swiper :options="swiperOption">
-      <!-- slides -->
       <swiper-slide v-for="item of list" :key="item.id">
         <img :src="item.imgUrl" alt="" class="swiper-img">
       </swiper-slide>
@@ -11,7 +10,7 @@
 </template>
 
 <script>
-export default{
+export default {
   name: 'HomeSwiper',
   data () {
     return {
