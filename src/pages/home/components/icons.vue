@@ -38,12 +38,17 @@ export default{
     padding-bottom 50%
     .icon
       overflow hidden
+      position relative
       float left
       width 25%
       padding-bottom 25%
+      box-sizing border-box
       background-color lightgreen
       .icon-text
         line-height .5rem
+        position absolute
+        bottom .44rem
+        width 100%
         text-align center
         border-radius .1rem
         color #fff
