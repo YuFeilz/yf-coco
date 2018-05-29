@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="icon" v-for ="item in page" :key="item.id">
           <p class="icon-text">{{item.text}}</p>
@@ -14,6 +14,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      swiperOption: {
+        autoplay: false
+      },
       iconList: [
         {id: '0001', imgUrl: '', text: '热门景点'},
         {id: '0002', imgUrl: '', text: '热门景点'},
@@ -43,24 +46,25 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-  .icons
+  @import '~@/assets/styles/mixins.styl'
+  .icons >>> .swiper-container
+    height: 0
+    padding-bottom: 50%
+  .icon
     overflow hidden
-    height 0
-    padding-bottom 50%
-    .icon
-      overflow hidden
-      position relative
-      float left
-      width 25%
-      padding-bottom 25%
-      box-sizing border-box
-      background-color lightgreen
-      .icon-text
-        line-height .5rem
-        position absolute
-        bottom .44rem
-        width 100%
-        text-align center
-        border-radius .1rem
-        color #fff
+    position relative
+    float left
+    width 25%
+    padding-bottom 25%
+    box-sizing border-box
+    background-color lightgreen
+    .icon-text
+      line-height .5rem
+      position absolute
+      bottom .44rem
+      width 100%
+      text-align center
+      border-radius .1rem
+      color #fff
+      ellipsis()
 </style>
