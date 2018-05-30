@@ -54,7 +54,6 @@ export default {
     width 25%
     padding-bottom 25%
     box-sizing border-box
-    background-color lightgreen
     .icon-img
       position absolute
       top: 0

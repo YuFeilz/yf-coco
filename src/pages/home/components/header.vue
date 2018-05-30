@@ -7,10 +7,12 @@
       <span class="iconfont ">&#xe632;</span>
       <input type="text">
     </div>
-    <div class="header-right">
-      {{city}}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{city}}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -29,7 +31,7 @@ export default{
     background-color #00bcd4
     color #fff
     .header-left
-      widows 0.64rem
+      width 0.64rem
       float left
       .back-icon
         text-align center
@@ -48,6 +50,7 @@ export default{
       width 1.24rem
       float right
       text-align center
+      color #fff
       .arrow-icon
         font-size .24rem
 </style>
