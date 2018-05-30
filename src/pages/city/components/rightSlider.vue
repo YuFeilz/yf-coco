@@ -1,15 +1,19 @@
 <template>
   <ul class="list">
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
+    <li class="item" v-for="(city,key) of cites" :key="key" @click="handlslider">{{ key }}</li>
   </ul>
 </template>
 <script>
 export default {
-  name: 'CitySlider'
+  name: 'CitySlider',
+  props: {
+    cites: Object
+  },
+  methods: {
+    handlslider: function (e) {
+      this.$emit('change', e.target.innerText)
+    }
+  }
 }
 </script>
 <style lang="stylus" scoped>

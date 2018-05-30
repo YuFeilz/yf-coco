@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list></city-list>
-    <city-slider></city-slider>
+    <city-list :cites="cites" :hot="hotCities" :letter="letter"></city-list>
+    <city-slider :cites="cites" @change="handleletter"></city-slider>
   </div>
 </template>
 <script>
@@ -23,7 +23,8 @@ export default {
   data () {
     return {
       cites: {},
-      hotCites: []
+      hotCities: [],
+      letter: ''
     }
   },
   methods: {
@@ -32,10 +33,14 @@ export default {
     },
     handleSucc: function (json) {
       json = json.data
-      if(json.ref&&json.data.length){
-        const data=json.data
-
+      if (json.ret && json.data) {
+        const data = json.data
+        this.cites = data.cities
+        this.hotCities = data.hotCities
       }
+    },
+    handleletter: function (msg) {
+      this.letter = msg
     }
   },
   mounted () {
