@@ -29,23 +29,27 @@
 </template>
 <script>
 import BScroll from 'better-scroll'
+import bus from '@/assets/bus'
 export default {
   name: 'CityList',
+  data () {
+    return {
+      letter: ''
+    }
+  },
   props: {
     cites: Object,
-    hot: Array,
-    letter: String
+    hot: Array
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
-  },
-  watch: {
-    letter () {
-      if (this.letter) {
-        const el = this.$refs[this.letter][0]
-        this.scroll.scrollToElement(el)
-      }
-    }
+    const $this = this
+    bus.$on('change', function (msg) {
+      console.log(this)
+      this.letter = msg
+      const el = $this.$refs[this.letter][0]
+      $this.scroll.scrollToElement(el)
+    })
   }
 }
 </script>
