@@ -45,7 +45,6 @@ export default {
     this.scroll = new BScroll(this.$refs.wrapper)
     const $this = this
     bus.$on('change', function (msg) {
-      console.log(this)
       this.letter = msg
       const el = $this.$refs[this.letter][0]
       $this.scroll.scrollToElement(el)

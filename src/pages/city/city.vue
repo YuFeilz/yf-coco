@@ -1,7 +1,7 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search :cities="cites"></city-search>
     <city-list :cites="cites" :hot="hotCities"></city-list>
     <city-slider :cites="cites"></city-slider>
   </div>
@@ -26,6 +26,9 @@ export default {
       hotCities: []
     }
   },
+  mounted () {
+    this.getCites()
+  },
   methods: {
     getCites: function () {
       axios.get('/api/city.json').then(this.handleSucc)
@@ -38,9 +41,6 @@ export default {
         this.hotCities = data.hotCities
       }
     }
-  },
-  mounted () {
-    this.getCites()
   }
 }
 </script>
