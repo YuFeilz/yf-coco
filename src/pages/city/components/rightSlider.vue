@@ -4,7 +4,6 @@
   </ul>
 </template>
 <script>
-import bus from '@/assets/bus'
 export default {
   name: 'CitySlider',
   props: {
@@ -12,7 +11,7 @@ export default {
   },
   methods: {
     handlslider: function (e) {
-      bus.$emit('change', e.target.innerText)
+      this.$root.Bus.$emit('change', e.target.innerText)
     }
   }
 }

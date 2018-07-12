@@ -29,7 +29,6 @@
 </template>
 <script>
 import BScroll from 'better-scroll'
-import bus from '@/assets/bus'
 import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
@@ -59,7 +58,7 @@ export default {
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
     const $this = this
-    bus.$on('change', function (msg) {
+    this.$root.Bus.$on('change', function (msg) {
       this.letter = msg
       const el = $this.$refs[this.letter][0]
       $this.scroll.scrollToElement(el)

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Bus from './assets/bus.js'
 // 解决移动端点击300毫秒延迟问题
 import fastClick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -19,6 +20,9 @@ Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    Bus
+  },
   router,
   store,
   render: h => h(App)

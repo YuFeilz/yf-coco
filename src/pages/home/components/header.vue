@@ -1,16 +1,16 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <div class="iconfont back-icon">&#xe624;</div>
+      <div class="iconfont back-icon">&#xe656;</div>
     </div>
     <div class="header-input">
-      <span class="iconfont ">&#xe632;</span>
+      <span class="iconfont">&#xe600;</span>
       <input type="text">
     </div>
-    <router-link to="/city">
+    <router-link to="/city" key="arrow">
       <div class="header-right">
         {{this.city}}
-        <span class="iconfont arrow-icon">&#xe64a;</span>
+        <span class="iconfont arrow-icon">&#xe654;</span>
       </div>
     </router-link>
   </div>
@@ -57,5 +57,5 @@ export default{
       text-align center
       color #fff
       .arrow-icon
-        font-size .24rem
+        font-size .36rem
 </style>

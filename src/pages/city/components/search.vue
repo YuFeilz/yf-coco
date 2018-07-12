@@ -32,9 +32,11 @@ export default {
   },
   methods: {
     handleCityClick (city) {
+      // 调用mutation改变state状态
       // this.$store.commit('changecity', city)
       this.changecity(city)
       this.$router.push('/')
+      this.keywords = 's'
     },
     ...mapMutations(['changecity'])
   },
