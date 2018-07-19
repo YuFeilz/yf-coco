@@ -50,19 +50,29 @@ export default {
   methods: {
     handleCityClick (city) {
       // this.$store.commit('changecity', city)
+      // 调用changecity方法并且把当前点击的城市名称作为参数传递
       this.changecity(city)
+      // 选中城市后页面饭后到首页
       this.$router.push('/')
     },
+    // 利用展开运算符将mutation中的changecity方法映射到当前的changecity方法上
     ...mapMutations(['changecity'])
   },
   mounted () {
+    // 组件挂载成功后添加滚动效果
     this.scroll = new BScroll(this.$refs.wrapper)
     const $this = this
+    // 监听右侧列表的change事件
     this.$root.Bus.$on('change', function (msg) {
       this.letter = msg
       const el = $this.$refs[this.letter][0]
+      // 根据传回来的字母滚动元素定位到右侧选中元素的list列表开始
       $this.scroll.scrollToElement(el)
     })
+  },
+  // 组件重新加载的时候滚动从当前页面顶部开始
+  updated () {
+    this.scroll = new BScroll(this.$refs.wrapper)
   }
 }
 </script>

@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getCites: function () {
-      axios.get('/api/city.json').then(this.handleSucc)
+      axios.get('https://www.easy-mock.com/mock/5b4ffb5b2728c11696daa7de/coco/city').then(this.handleSucc)
     },
     handleSucc: function (json) {
       json = json.data

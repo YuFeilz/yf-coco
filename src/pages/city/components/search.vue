@@ -26,22 +26,28 @@ export default {
     }
   },
   computed: {
+    // 判断搜索的列表的长度
     hasData () {
       return !this.list.length
     }
   },
   methods: {
     handleCityClick (city) {
-      // 调用mutation改变state状态
+      // 调用mutation的changecity方法将选中的城市名作为参数传递（改变state状态）
       // this.$store.commit('changecity', city)
       this.changecity(city)
+      // 选中城市页面导航到首页
       this.$router.push('/')
-      this.keywords = 's'
+      // 关键字清空
+      this.keywords = ''
     },
+    // 利用展开运算符将mutation中的changecity方法映射到当前的changecity方法
     ...mapMutations(['changecity'])
   },
   watch: {
+    // 关键字监听器
     keywords () {
+      // 如果关键字不存在清空搜索列表
       if (!this.keywords) {
         this.list = []
         return
@@ -57,6 +63,7 @@ export default {
     }
   },
   mounted () {
+    // 搜索列表添加滚动功能
     this.scroll = new Bscroll(this.$refs.search)
   }
 }

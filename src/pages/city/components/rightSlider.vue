@@ -11,6 +11,7 @@ export default {
   },
   methods: {
     handlslider: function (e) {
+      // 利用总线绑定change事件等待监听，将当前点击的字母作为参数传递
       this.$root.Bus.$emit('change', e.target.innerText)
     }
   }
