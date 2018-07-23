@@ -1,9 +1,28 @@
 <template>
-  <div class="header">北京国际鲜花港</div>
+  <div class="header" v-show="hasHeader">
+   <router-link tag="span" to="/" class="iconfont back">&#xe656;</router-link> 北京国际鲜花港</div>
 </template>
 <script>
 export default {
-  name: 'DetailHeader'
+  name: 'DetailHeader',
+  data () {
+    return {
+      hasHeader: false
+    }
+  },
+  methods: {
+    handleScroll () {
+      let scrollTop = document.documentElement.scrollTop
+      if (scrollTop > 60) {
+        this.hasHeader = true
+      } else {
+        this.hasHeader = false
+      }
+    }
+  },
+  activated () {
+    window.addEventListener('scroll', this.handleScroll)
+  }
 }
 </script>
 <style lang="stylus" scoped>
@@ -16,4 +35,7 @@ export default {
     color #ffffff
     line-height .86rem
     text-align center
+    .back
+      position absolute
+      left .2rem
 </style>
